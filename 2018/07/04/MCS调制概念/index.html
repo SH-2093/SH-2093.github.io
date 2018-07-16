@@ -9,22 +9,22 @@
   <title>MCS调制概念 | SH-2093 Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="MCS指的是modulation and coding scheme，即调制编码方案。是通信协议中非常重要的一个概念和指标。MCS的高低直接依赖于信道质量的好坏。那么MCS到底指的是什么呢？本文将做一个具体的介绍。5GNR方案中的调制阶数主要可以分为三个大类：1、针对下行链路的调制：从QPSK到256QAM2、针对上行OFDM的调制：从QPSK到256QAM3、针对上行DFT-s-OFDM的调制：">
-<meta name="keywords" content="-MCS -调制阶数">
+<meta name="keywords" content="MCS,调制阶数">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MCS调制概念">
 <meta property="og:url" content="http://yoursite.com/2018/07/04/MCS调制概念/index.html">
 <meta property="og:site_name" content="SH-2093 Blog">
 <meta property="og:description" content="MCS指的是modulation and coding scheme，即调制编码方案。是通信协议中非常重要的一个概念和指标。MCS的高低直接依赖于信道质量的好坏。那么MCS到底指的是什么呢？本文将做一个具体的介绍。5GNR方案中的调制阶数主要可以分为三个大类：1、针对下行链路的调制：从QPSK到256QAM2、针对上行OFDM的调制：从QPSK到256QAM3、针对上行DFT-s-OFDM的调制：">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/images/modulation.png">
-<meta property="og:image" content="http://yoursite.com/images/QPSK星座图.jpg">
-<meta property="og:image" content="http://yoursite.com/images/QPSK公式.jpg">
-<meta property="og:image" content="http://yoursite.com/images/QAM星座图.jpg">
-<meta property="og:updated_time" content="2018-07-04T15:44:35.086Z">
+<meta property="og:image" content="http://yoursite.com/images/MCS/modulation.png">
+<meta property="og:image" content="http://yoursite.com/images/MCS/QPSK星座图.jpg">
+<meta property="og:image" content="http://yoursite.com/images/MCS/QPSK公式.jpg">
+<meta property="og:image" content="http://yoursite.com/images/MCS/QAM星座图.jpg">
+<meta property="og:updated_time" content="2018-07-16T16:29:00.603Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MCS调制概念">
 <meta name="twitter:description" content="MCS指的是modulation and coding scheme，即调制编码方案。是通信协议中非常重要的一个概念和指标。MCS的高低直接依赖于信道质量的好坏。那么MCS到底指的是什么呢？本文将做一个具体的介绍。5GNR方案中的调制阶数主要可以分为三个大类：1、针对下行链路的调制：从QPSK到256QAM2、针对上行OFDM的调制：从QPSK到256QAM3、针对上行DFT-s-OFDM的调制：">
-<meta name="twitter:image" content="http://yoursite.com/images/modulation.png">
+<meta name="twitter:image" content="http://yoursite.com/images/MCS/modulation.png">
   
     <link rel="alternative" href="/atom.xml" title="SH-2093 Blog" type="application/atom+xml">
   
@@ -180,8 +180,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>MCS指的是modulation and coding scheme，即调制编码方案。是通信协议中非常重要的一个概念和指标。MCS的高低直接依赖于信道质量的好坏。那么MCS到底指的是什么呢？本文将做一个具体的介绍。<br>5GNR方案中的调制阶数主要可以分为三个大类：<br>1、针对下行链路的调制：从QPSK到256QAM<br>2、针对上行OFDM的调制：从QPSK到256QAM<br>3、针对上行DFT-s-OFDM的调制：从2/πBPSK到256QAm<br><a id="more"></a><br>我们知道，平常我们所听到看到的信号,由于频率、带宽以及易受干扰等原因，不适合直接用天线发射，所以就使用一个高频信号作为载波，把需要传输的信号混入载波中，通过天线发射，在接收端再通过解调电路，筛选出所需频率信号，再滤除干扰信号，还原出我们所需的信号，这样的方法就是调制。<br>由于现今的通信频谱资源十分有限，因此在较少的频谱上传输更多的信息是调制主要期望的功能。该指标主要通过频谱效率来体现：单位是b/s/Hz<br>调制的基础主要可以分为三种，调幅，调频和调相，一幅图就能说明三者之间的区别。<br><img src="/images/modulation.png" alt="“调制波形”"><br>我们在这里主要介绍NR中用到的几种调制方式。</p>
-<p>一、2/π BPSK<br>二、QPSK<br>QPSK即为正交相移键控，通过让相移值变为90度使得一个波形可能表示两个比特组合<br>其星座图可以表示为<br><img src="/images/QPSK星座图.jpg" alt="“QPSK星座图”"><br>公式为<br><img src="/images/QPSK公式.jpg" alt="“QPSK公式”"><br>三、QAM<br>现如今通信系统中主要使用的是混合调制，即QAM，正交振幅调制。在调制过程中，同时以载波信号的幅度和相位来代表不同的数字比特编码，把多进制与正交载波技术结合起来，进一步提高频带利用率。这样的原理也使得其星座图可以在幅度和相位两个方向进行拓展。<br><img src="/images/QAM星座图.jpg" alt="“QAM星座图”"></p>
+        <p>MCS指的是modulation and coding scheme，即调制编码方案。是通信协议中非常重要的一个概念和指标。MCS的高低直接依赖于信道质量的好坏。那么MCS到底指的是什么呢？本文将做一个具体的介绍。<br>5GNR方案中的调制阶数主要可以分为三个大类：<br>1、针对下行链路的调制：从QPSK到256QAM<br>2、针对上行OFDM的调制：从QPSK到256QAM<br>3、针对上行DFT-s-OFDM的调制：从2/πBPSK到256QAm<br><a id="more"></a><br>我们知道，平常我们所听到看到的信号,由于频率、带宽以及易受干扰等原因，不适合直接用天线发射，所以就使用一个高频信号作为载波，把需要传输的信号混入载波中，通过天线发射，在接收端再通过解调电路，筛选出所需频率信号，再滤除干扰信号，还原出我们所需的信号，这样的方法就是调制。<br>由于现今的通信频谱资源十分有限，因此在较少的频谱上传输更多的信息是调制主要期望的功能。该指标主要通过频谱效率来体现：单位是b/s/Hz<br>调制的基础主要可以分为三种，调幅，调频和调相，一幅图就能说明三者之间的区别。<br><img src="/images/MCS/modulation.png" alt="“调制波形”"><br>我们在这里主要介绍NR中用到的几种调制方式。</p>
+<p>一、2/π BPSK<br>二、QPSK<br>QPSK即为正交相移键控，通过让相移值变为90度使得一个波形可能表示两个比特组合<br>其星座图可以表示为<br><img src="/images/MCS/QPSK星座图.jpg" alt="“QPSK星座图”"><br>公式为<br><img src="/images/MCS/QPSK公式.jpg" alt="“QPSK公式”"><br>三、QAM<br>现如今通信系统中主要使用的是混合调制，即QAM，正交振幅调制。在调制过程中，同时以载波信号的幅度和相位来代表不同的数字比特编码，把多进制与正交载波技术结合起来，进一步提高频带利用率。这样的原理也使得其星座图可以在幅度和相位两个方向进行拓展。<br><img src="/images/MCS/QAM星座图.jpg" alt="“QAM星座图”"></p>
 
       
 
@@ -216,7 +216,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">-MCS -调制阶数</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">MCS</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">调制阶数</a>
         		</li>
       		
 		</ul>
@@ -435,11 +439,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">-MCS -调制阶数</a>
+                <a href="javascript:void(0)" class="js-tag color4">MCS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">-随机接入前导 -TA</a>
+                <a href="javascript:void(0)" class="js-tag color5">调制阶数</a>
               </li>
              
               <li class="article-tag-list-item">

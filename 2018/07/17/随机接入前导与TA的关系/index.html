@@ -16,10 +16,12 @@
 <meta property="og:site_name" content="SH-2093 Blog">
 <meta property="og:description" content="本文将介绍随机接入前导和TA的关系。1、TA的概念在介绍具体事项之前，需要首先说明TA的概念：TA即time advancing，是为了弥补载波在空间中传输的时间损耗所提出的概念。在TDD系统中，上行传输的一个重要特征是不同UE在时频上正交多址接入（orthogonal multiple access），即来自同一小区的不同UE的上行传输之间互不干扰。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-07-16T16:13:50.604Z">
+<meta property="og:image" content="http://yoursite.com/images/preamble_and_TA/preamble_struct.png">
+<meta property="og:updated_time" content="2018-07-16T16:27:26.077Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="随机接入前导与TA的关系">
 <meta name="twitter:description" content="本文将介绍随机接入前导和TA的关系。1、TA的概念在介绍具体事项之前，需要首先说明TA的概念：TA即time advancing，是为了弥补载波在空间中传输的时间损耗所提出的概念。在TDD系统中，上行传输的一个重要特征是不同UE在时频上正交多址接入（orthogonal multiple access），即来自同一小区的不同UE的上行传输之间互不干扰。">
+<meta name="twitter:image" content="http://yoursite.com/images/preamble_and_TA/preamble_struct.png">
   
     <link rel="alternative" href="/atom.xml" title="SH-2093 Blog" type="application/atom+xml">
   
@@ -175,7 +177,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>本文将介绍随机接入前导和TA的关系。<br>1、TA的概念<br>在介绍具体事项之前，需要首先说明TA的概念：TA即time advancing，是为了弥补载波在空间中传输的时间损耗所提出的概念。在TDD系统中，上行传输的一个重要特征是不同UE在时频上正交多址接入（orthogonal multiple access），即来自同一小区的不同UE的上行传输之间互不干扰。<br><a id="more"></a><br>而这里就出现了一个CP的概念，CP即循环前缀，用来解决多径干扰的问题，电磁波在空间中传播不是只会沿着一条路径前进，经过反射折射饶射等变化后，承载同一信号的载波到达目的地的时间也是不同的，因此将信号的后一段复制至信号之前，拓展整个信号的长度，这样一来，只要信号在CP的范围内到达接收端，就可以正确的解码。（在一个时间周期内信号都是呈现周期的，而非未加CP前时可能出现非满周期情况）。<br>在多个信号时，原理类似，由于多个信号之间是正交的，因此用解码序列乘以接受序列后积分的结果应该是0或者发出的信号符号。当积分时间段内信号不是满周期时，会使得信号间不再正交，干扰解码结果。<br>在UE侧看来，TA本质上是接收到下行子帧的起始时间与传输上行子帧的时间之间的一个负偏移（negative offset），将各个UE信号到达的时间保证在基站时序中的CP范围内。eNodeB通过适当地控制每个UE的偏移，可以控制来自不同UE的上行信号到达eNodeB的时间。对于离eNodeB较远的UE，由于有较大的传输延迟，就要比离eNodeB较近的UE提前发送上行数据。<br>2、preamble的结构：<br>preamble的结构分为三个部分，CP部分，sequence部分，还有守卫部分。<br>CP即上一节所介绍的CP，为了保证各个preamble之间的正交性而存在的冗余字段。<br>sequence即preamble的内容，在NR中主要有两种长度139和839，分别对应不同的格式，短格式占一个slot，长格式会占数个slot。<br>守卫时间即为了保证preamble不会影响下一个时隙的信号接收存在的。由于此时基站并没有UE的信息，且UE也并不知道自己在小区中的实际位置，因此传输的preamble很可能时延较大，因此设置一个守卫时间以防止其影响到下一个时隙的接收。守卫时间的设置与小区的覆盖范围有直接关系。<br>3、TA与preamble的关系<br>显然，TA在随机接入时会根据前导到达基站的时间确定其延迟时间，为了避免误解，这里明确一个量，即小区的覆盖范围是有限的，小区中UE传输的时延不会特别大，而此时UE已经接收到来自基站的时间同步信息，因此上行信号到达基站的时间不会与基站时序相差一个来回的路程，这段时间会控制在几个符号内。<br>基站在接收到preamble的时候，通过与自身时隙进行对比就可以清晰的获知，UE相较于基站时隙的延迟时间。基站会在msg2中第一次进行时间调整，这次时间调整的幅度较大，目的是需要粗略地弥补UE到基站这段路程造成的时延，此后由于UE的移动性等原因，基站还会根据UE上传的PUSCH和SRS等信息进行TA的微调。</p>
+        <p>本文将介绍随机接入前导和TA的关系。<br>1、TA的概念<br>在介绍具体事项之前，需要首先说明TA的概念：TA即time advancing，是为了弥补载波在空间中传输的时间损耗所提出的概念。在TDD系统中，上行传输的一个重要特征是不同UE在时频上正交多址接入（orthogonal multiple access），即来自同一小区的不同UE的上行传输之间互不干扰。<br><a id="more"></a><br>而这里就出现了一个CP的概念，CP即循环前缀，用来解决多径干扰的问题，电磁波在空间中传播不是只会沿着一条路径前进，经过反射折射饶射等变化后，承载同一信号的载波到达目的地的时间也是不同的，因此将信号的后一段复制至信号之前，拓展整个信号的长度，这样一来，只要信号在CP的范围内到达接收端，就可以正确的解码。（在一个时间周期内信号都是呈现周期的，而非未加CP前时可能出现非满周期情况）。<br>在多个信号时，原理类似，由于多个信号之间是正交的，因此用解码序列乘以接受序列后积分的结果应该是0或者发出的信号符号。当积分时间段内信号不是满周期时，会使得信号间不再正交，干扰解码结果。<br>在UE侧看来，TA本质上是接收到下行子帧的起始时间与传输上行子帧的时间之间的一个负偏移（negative offset），将各个UE信号到达的时间保证在基站时序中的CP范围内。eNodeB通过适当地控制每个UE的偏移，可以控制来自不同UE的上行信号到达eNodeB的时间。对于离eNodeB较远的UE，由于有较大的传输延迟，就要比离eNodeB较近的UE提前发送上行数据。<br>2、preamble的结构：<br>preamble的结构分为三个部分，CP部分，sequence部分，还有守卫部分。<br><img src="/images/preamble_and_TA/preamble_struct.png" alt="“Preamble结构”"><br>CP即上一节所介绍的CP，为了保证各个preamble之间的正交性而存在的冗余字段。<br>sequence即preamble的内容，在NR中主要有两种长度139和839，分别对应不同的格式，短格式占一个slot，长格式会占数个slot。<br>守卫时间即为了保证preamble不会影响下一个时隙的信号接收存在的。由于此时基站并没有UE的信息，且UE也并不知道自己在小区中的实际位置，因此传输的preamble很可能时延较大，因此设置一个守卫时间以防止其影响到下一个时隙的接收。守卫时间的设置与小区的覆盖范围有直接关系。<br>3、TA与preamble的关系<br>显然，TA在随机接入时会根据前导到达基站的时间确定其延迟时间，为了避免误解，这里明确一个量，即小区的覆盖范围是有限的，小区中UE传输的时延不会特别大，而此时UE已经接收到来自基站的时间同步信息，因此上行信号到达基站的时间不会与基站时序相差一个来回的路程，这段时间会控制在几个符号内。<br>基站在接收到preamble的时候，通过与自身时隙进行对比就可以清晰的获知，UE相较于基站时隙的延迟时间。基站会在msg2中第一次进行时间调整，这次时间调整的幅度较大，目的是需要粗略地弥补UE到基站这段路程造成的时延，此后由于UE的移动性等原因，基站还会根据UE上传的PUSCH和SRS等信息进行TA的微调。</p>
 
       
 
@@ -424,11 +426,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">-MCS -调制阶数</a>
+                <a href="javascript:void(0)" class="js-tag color4">MCS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">-随机接入前导 -TA</a>
+                <a href="javascript:void(0)" class="js-tag color5">调制阶数</a>
               </li>
              
               <li class="article-tag-list-item">
